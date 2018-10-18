@@ -1,0 +1,26 @@
+├── flaskblog
+│   ├── __init__.py
+│   ├── forms.py
+│   ├── models.py
+│   ├── routs.py
+│   ├── static
+│   │   └── main.css
+│   └── templates
+│       ├── about.html
+│       ├── home.html
+│       ├── layout.html
+│       ├── login.html
+│       └── register.html
+├── notes
+│   ├── instruction.html
+│   ├── instruction.md
+│   └── sc
+│       └── form.jpg
+├── run.py
+└── snippets
+    ├── article.html
+    ├── main.css
+    ├── main.html
+    ├── navigation.html
+    └── temp.html
+    
