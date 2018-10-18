@@ -1,6 +1,6 @@
 # User Authentication
 
-### Hashing Module
+## Hashing Module
 ```
 $ pip install flask-bcrypt
 ```
@@ -39,7 +39,7 @@ False
 True  
 ```
 
-#### Codes for Hashing
+### Codes for Hashing
 
 _\_\_init\_\_.py_
 ```python
@@ -85,7 +85,7 @@ User('user', 'user@gmail.com', 'default.jpg')
 >>> user.password
 '$2b$12$OcRihmokPinUFwCUTxuSWeFXdbeVTzkb1XhiDicXPl91Utr/iKY5m'
 ```
-### Dealing with Information Already Taken
+## Dealing with Information Already Taken
 We haven't dealt with the condition where the email has already been in the database. Now let's see what this looks like if we were to try to add another user or email that currently already exists.
 
 You will see the following error message from SQLAlchemy saying that the UNIQUE constraint failed because we restricted the email address to be unique in our model definition.
@@ -119,7 +119,7 @@ class RegistrationForm(FlaskForm):
                 'That e-mail is taken. Please choose a different one.')
 
 ```
-### The Login Form
+## The Login Form
 Now we need to create a login system so that our users that have created accounts can login and logout. To do this, we will be using another flask extension called flask-login, which makes it really easy to manage user sessions. 
 - Installation
 ```
@@ -185,7 +185,7 @@ def login():
     return render_template('login.html', title='Login', form=form)
 
 ```
-### Login Status
+## Login Status
 
 What is strange here is that we're logged in but we can still see our login register routes(buttons) in our navigation bar. If we click on one of those routes, we will get back to the login page even though we've already logged in.
 
@@ -215,7 +215,7 @@ def login():
 ```
 Now when we try to click on the login and register routes, it just rediects us back to the home page, so the new code is working. 
 
-### Logout Route 
+## Logout Route 
 It's still a little strange that we even see the login and register links in our navigation if we're logged in. Most websites will replace those with a logout link if you're logged in.
 
 So let's create a logout route to logout our user, and then we will display, in our navigation when the user is logged in,a logout route. Just like we use the _login_user()_ function to log the user in, we're going to need to use the _logout_user()_ function to log the user out.
@@ -239,7 +239,7 @@ def logout():
 ```
 We also want to see this logout link in the navigation if the user is logged in so in this case we have to change our layout template where the navation is created.
 
-### Change Layout for logged-in User
+## Change Layout for logged-in User
 In _layout.html_ template, add the conditional statements to show the logout link.
 ```html
 	<div class="navbar-nav">
@@ -255,7 +255,7 @@ Now when we refresh the home page, we will see the navigation bar showing the lo
 
 ![logout](sc/logout.png)
 
-### Restriction on Certain Routes
+## Restriction on Certain Routes
 You can only go to those routes if you are logged in.
 
 Let's create a route for the user's account that they can access after they've logged in. In _routes.py_
