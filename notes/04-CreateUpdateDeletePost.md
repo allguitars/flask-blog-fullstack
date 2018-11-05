@@ -1,4 +1,4 @@
-#Create, Update, Delete, and Post
+# Create, Update, Delete, and Post
 
 Now that this website can allow the user to register a account, login, and upload their photos, it's time to make the functionality where the users can add, update, and delete the real blog posts.
 
