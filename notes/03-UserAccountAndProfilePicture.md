@@ -31,7 +31,7 @@ Modified _account.html_
 	</div>
 {% endblock content %}
 ```
-## Adding a Form to Update Account Information
+## Adding the Form for Updating Account Information
 Within the Account page, we also want to be able to to update our username email address and also upload a custom profile picture so we need to create forms for that.
 
 _forms.py_

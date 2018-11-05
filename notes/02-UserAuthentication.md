@@ -26,7 +26,7 @@ b'$2b$12$nM3S.fXrl047H.DWdInJ4ucUXdVRozhoXP8ATmihCp/dqpXi.aleq'
 ```
 If it's a different hash every time, then how can we verify if the user enters the correct password?
 
-We need to use another method called _check_password_hash()_ method to check if those passwords are equal. Now let's save the hashed password to a variable. 
+We need to use another method called _check_password_hash()_ method to check if those passwords are equal. Now let's save the hashed password to a variable.
 ```python
 >>> hashed_pw = bcrypt.generate_password_hash('testing').decode('utf-8')
 >>> hashed_pw
@@ -68,7 +68,7 @@ def register():
         db.session.add(user)
         db.session.commit()
         # ----------------------------------------------
-        
+
         flash('Your account has been created! You are now able to log in.', 'success')
         return redirect(url_for('login'))  # Now, change redirect to the login page
     return render_template('register.html', title='Register', form=form)
@@ -76,7 +76,7 @@ def register():
 ```
 After creating the user by entering the user's information to the websaite, let's check if the user has been created in our database.
 ```python
-# In Python console 
+# In Python console
 >>> from flaskblog import db
 >>> from flaskblog.models import User
 >>> user = User.query.first()
@@ -92,7 +92,7 @@ You will see the following error message from SQLAlchemy saying that the UNIQUE 
 
 ![user](sc/user_exists.jpg)
 
-This is what happens when flask therows an error and you're running in **debug mode**. This information can be extremely useful for debugging problems in your application, but this is also why you want to be absolutely sure that you're **never** running debug mode when you depoly your website publicly. This is just too much information to expose to other people. 
+This is what happens when flask therows an error and you're running in **debug mode**. This information can be extremely useful for debugging problems in your application, but this is also why you want to be absolutely sure that you're **never** running debug mode when you depoly your website publicly. This is just too much information to expose to other people.
 
 The best way to solve this would be to add our own custom validation for the registration form. That way it gets checked when we actually try to validate the form and we'll return the visual feedback of the error messages like we've seen before. We can create the custom validation simply by creating a function within the registration form.
 
@@ -105,7 +105,7 @@ from flaskblog.models import User
 ...
 
 class RegistrationForm(FlaskForm):
-    
+
     def validate_username(self, username):
         # Return None if there isn't such user
         user = User.query.filter_by(username=username.data).first()
@@ -120,7 +120,7 @@ class RegistrationForm(FlaskForm):
 
 ```
 ## The Login Form
-Now we need to create a login system so that our users that have created accounts can login and logout. To do this, we will be using another flask extension called flask-login, which makes it really easy to manage user sessions. 
+Now we need to create a login system so that our users that have created accounts can login and logout. To do this, we will be using another flask extension called flask-login, which makes it really easy to manage user sessions.
 - Installation
 ```
 $ pip install flask-login
@@ -176,8 +176,8 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
         # If user exists and the password matches
         if user and bcrypt.check_password_hash(user.password, form.password.data):
-            
-            # Log in the user with login_user function and set the remember argument 
+
+            # Log in the user with login_user function and set the remember argument
             login_user(user, remember=form.remember.data)
             return redirect(url_for('home'))
         else:
@@ -213,9 +213,9 @@ def login():
     ...
 
 ```
-Now when we try to click on the login and register routes, it just rediects us back to the home page, so the new code is working. 
+Now when we try to click on the login and register routes, it just rediects us back to the home page, so the new code is working.
 
-## Logout Route 
+## Logout Route
 It's still a little strange that we even see the login and register links in our navigation if we're logged in. Most websites will replace those with a logout link if you're logged in.
 
 So let's create a logout route to logout our user, and then we will display, in our navigation when the user is logged in,a logout route. Just like we use the _login_user()_ function to log the user in, we're going to need to use the _logout_user()_ function to log the user out.
@@ -330,8 +330,8 @@ One more thing to improve:
 It would be nice if, after we're logged in, it would just redirect us back to the page that we are trying to access before it told us that we have to log in.
 
 ![parameters](sc/parameter.png)
- 
-If we look here in the URL after we are prompted the message that tells us to log in, we can see a query parameter here called **next**, and it is euqual to the route ther we were trying to log inot before we got redirected. So in our login route, let's access that query parameter and if it exists, then we will direct the user there after they log in.
+
+If we look here in the URL after we are prompted the message that tells us to log in, we can see a query parameter here called **next**, and it is euqual to the route ther we were trying to log into before we got redirected. So in our login route, let's access that query parameter and if it exists, then we will direct the user there after they log in.
 
 In _routes.py_
 ```python
@@ -351,8 +351,8 @@ def login():
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
             # -------------- Added ----------------
-            # args is a dictionary, but you don't want to access next using the 
-            # square brackets and key name becaus that would throw an error if the 
+            # args is a dictionary, but you don't want to access next using the
+            # square brackets and key name becaus that would throw an error if the
             # key doesn't exist, and the next parameter is going to be optinal.
             # If we use the get() method, then it will simply return None if the key
             # doesn't exist.
