@@ -83,6 +83,7 @@ def new_post():
 ## Complete the template
 
 Now, let's add this form to our create_post template. Since this is a similar to what we did so we can grab the form from the login template and change this around to match the fields that we need in our PostForm.
+
 _create_post.html_
 ```html
 {% extends "layout.html" %}
@@ -129,7 +130,7 @@ _create_post.html_
 
 ## Add a link to the new route
 
-Let's add a link to our navigation bar so that the logged in user can get to this route easily. The navbar is in the _layout.html_ template.
+Let's add a link to our navigation bar so that the logged in user can get to this route easily. The navbar is in the _layout.html_ template:
 
 ```html
 <!-- Navbar Right Side -->
