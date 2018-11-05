@@ -279,7 +279,7 @@ _post.html_
 {% extends "layout.html" %}
 {% block content %}
 <article class="media content-section">
-  <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/'+post.author.image_file) }}" alt="profile image">
+  <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/'+post.author.image_file) }}" alt="profile image">
   <div class="media-body">
     <div class="article-metadata">
       <a class="mr-2" href="#">{{ post.author.username }}</a>
