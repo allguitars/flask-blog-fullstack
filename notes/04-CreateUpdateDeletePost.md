@@ -5,8 +5,8 @@ Now that this website can allow the user to register a account, login, and uploa
 ## Add a new route for creating a new post
 
 _routes.py_
-```python
-...
+```Python
+...
 
 @app.route('/post/new')
 @login_required
@@ -231,7 +231,7 @@ _home.html_
 <article class="media content-section">
 	<div class="media-body">
 		<div class="article-metadata">
-			<img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/'+post.author.image_file) }}" alt="profile image">
+      <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/'+post.author.image_file) }}" alt="profile image">
 			<a class="mr-2" href="#">{{ post.author.username }}</a>
 			<small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
 		</div>
@@ -246,7 +246,7 @@ After the change:
 
 ![new-post](sc/new-post-pic.png)
 
-## Add the Individual Post Page
+## Add the Individual Post Page
 
 **Flask** gives us the ability to add variables within our actual routes so if we wanted to create a route where the id of a post is actually part of the route, then we can create a route that would look like following:
 
