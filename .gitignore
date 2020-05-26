@@ -1,2 +1,4 @@
 snippets/
+venv-flask-blog/
+__pycache__/
 .DS_Store
